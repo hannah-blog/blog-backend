@@ -1,4 +1,4 @@
-package stie.hannahlog.blogBackend
+package site.hannahlog.blogBackend
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

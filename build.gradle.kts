@@ -12,7 +12,7 @@ plugins {
     kotlin("kapt") version "1.6.21"
 }
 
-group = "stie.hannahLog"
+group = "site.hannahLog"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
