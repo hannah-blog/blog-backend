@@ -1,4 +1,4 @@
-package site.hannahlog.blogBackend
+package site.hannahlog.www
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

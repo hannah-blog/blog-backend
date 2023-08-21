@@ -1,6 +1,6 @@
-package site.hannahlog.blogBackend.utils.response
+package site.hannahlog.www.utils.response
 
-import site.hannahlog.blogBackend.utils.exception.ErrorCode
+import site.hannahlog.www.utils.exception.ErrorCode
 
 sealed class ApiResponse<T>(
     open val data: T? = null,

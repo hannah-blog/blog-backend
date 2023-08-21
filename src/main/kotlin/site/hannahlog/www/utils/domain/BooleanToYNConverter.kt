@@ -1,4 +1,4 @@
-package site.hannahlog.blogBackend.utils.domain
+package site.hannahlog.www.utils.domain
 
 import javax.persistence.AttributeConverter
 import javax.persistence.Converter

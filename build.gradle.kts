@@ -35,11 +35,6 @@ dependencies {
     // database
     runtimeOnly("com.h2database:h2") // test
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client") // develop
-
-    // querydsl
-    implementation("com.querydsl:querydsl-jpa:5.0.0")
-    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
-    kapt("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 tasks.withType<KotlinCompile> {
@@ -51,9 +46,4 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-// querydsl
-sourceSets["main"].withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
-    kotlin.srcDir("$buildDir/generated/source/kapt/main")
 }

@@ -1,4 +1,4 @@
-package site.hannahlog.blogBackend.utils.domain
+package site.hannahlog.www.utils.domain
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
