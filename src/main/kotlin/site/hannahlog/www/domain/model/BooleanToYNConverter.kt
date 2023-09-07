@@ -1,7 +1,7 @@
-package site.hannahlog.www.utils.domain
+package site.hannahlog.www.domain.model
 
-import javax.persistence.AttributeConverter
-import javax.persistence.Converter
+import jakarta.persistence.AttributeConverter
+import jakarta.persistence.Converter
 
 @Converter
 class BooleanToYNConverter : AttributeConverter<Boolean?, String> {

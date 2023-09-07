@@ -1,4 +1,4 @@
-package site.hannahlog.www.utils.exception
+package site.hannahlog.www.global.error
 
 enum class ErrorCode(
     val code: String,

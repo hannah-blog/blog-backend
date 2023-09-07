@@ -1,12 +1,10 @@
-package site.hannahlog.www.utils.handler
+package site.hannahlog.www.global.error
 
 import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.HttpRequestMethodNotSupportedException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import site.hannahlog.www.utils.exception.ErrorCode
-import site.hannahlog.www.utils.exception.LogicException
-import site.hannahlog.www.utils.response.ApiResponse.Error
+import site.hannahlog.www.global.common.response.ApiResponse.Error
 
 @RestControllerAdvice
 class ExceptionHandler {
