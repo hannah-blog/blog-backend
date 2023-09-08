@@ -1,5 +1,7 @@
 package site.hannahlog.www.global.error
 
+import site.hannahlog.www.global.common.status.ErrorStatus
+
 class LogicException(
-    val errorCode: ErrorCode
-) : RuntimeException(errorCode.message)
+    val errorStatus: ErrorStatus
+) : RuntimeException(errorStatus.message)
