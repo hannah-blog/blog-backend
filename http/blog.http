@@ -1,2 +1,6 @@
 ### GET blogs
-{{backend_api}}/blog
+GET {{backend_api}}/blog
+
+### GET blog
+GET {{backend_api}}/blog/1
+

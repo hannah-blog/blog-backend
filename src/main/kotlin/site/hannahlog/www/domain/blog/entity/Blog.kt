@@ -35,4 +35,15 @@ class Blog(
         )
     }
 
+    fun toResponse(): BlogResponse {
+        return BlogResponse(
+            id = this.id,
+            title = this.title,
+            thumbnailUrl = this.thumbnailUrl,
+            content = this.content,
+            tags = this.tags.map { it.toResponse() },
+            createdDate = this.createdDate,
+        )
+    }
+
 }
