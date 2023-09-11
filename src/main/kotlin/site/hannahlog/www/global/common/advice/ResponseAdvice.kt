@@ -19,7 +19,7 @@ class ResponseAdvice : ResponseBodyAdvice<ApiResponse<*>> {
     }
 
     override fun beforeBodyWrite(
-        @Nullable body: ApiResponse<*>?,
+        body: ApiResponse<*>?,
         returnType: MethodParameter,
         selectedContentType: MediaType,
         selectedConverterType: Class<out HttpMessageConverter<*>>,
