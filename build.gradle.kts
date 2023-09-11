@@ -33,8 +33,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // database
-    runtimeOnly("com.h2database:h2") // test
-    runtimeOnly("org.mariadb.jdbc:mariadb-java-client") // develop
+    runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 }
 
 tasks.withType<KotlinCompile> {
