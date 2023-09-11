@@ -15,14 +15,14 @@ sealed class ApiResponse<T>(
     data class Success<T>(override val data: T?, val success: ResponseStatus) :
         ApiResponse<T>(
             data = data,
-            code = success.getStatus().ordinal,
+            code = success.getStatus().value(),
             message = success.getMessage(),
             status = success.getStatus()
         )
 
     data class Error<T>(val error: ResponseStatus) :
         ApiResponse<T>(
-            code = error.getStatus().ordinal,
+            code = error.getStatus().value(),
             message = error.getMessage(),
             status = error.getStatus()
         )

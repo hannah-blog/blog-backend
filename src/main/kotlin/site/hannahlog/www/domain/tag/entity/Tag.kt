@@ -1,15 +1,24 @@
 package site.hannahlog.www.domain.tag.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import site.hannahlog.www.domain.model.BaseEntity
+import site.hannahlog.www.domain.tag.dto.response.TagResponse
 
 @Entity
 class Tag(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long,
+
+    @Column(nullable = false)
     private val name: String
-): BaseEntity()
+): BaseEntity() {
+
+    fun toResponse(): TagResponse {
+        return TagResponse(
+            id = this.id,
+            name = this.name,
+        )
+    }
+
+}
