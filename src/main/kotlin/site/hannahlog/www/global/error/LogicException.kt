@@ -4,4 +4,4 @@ import site.hannahlog.www.global.common.status.ErrorStatus
 
 class LogicException(
     val errorStatus: ErrorStatus
-) : RuntimeException(errorStatus.message)
+) : RuntimeException(errorStatus.getMessage())

@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus
 
 enum class ErrorStatus(
     private val code: HttpStatus,
-    val message: String
+    private val message: String
 ): ResponseStatus {
     SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버에서 문제가 발생했습니다. 나중에 다시 시도해주세요."),
 
