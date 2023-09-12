@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  RESOURCE_FILE: src/main/resources
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
