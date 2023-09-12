@@ -8,7 +8,7 @@ enum class ErrorStatus(
 ): ResponseStatus {
     SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버에서 문제가 발생했습니다. 나중에 다시 시도해주세요."),
 
-    JWT_ERROR(HttpStatus.FORBIDDEN, "잘못된 토큰입니다."),
+    IP_ERROR(HttpStatus.FORBIDDEN, "허용되지 않은 IP입니다."),
 
     NOT_EXIST_BLOG(HttpStatus.NOT_FOUND, "존재하지 않는 블로그입니다."),
 

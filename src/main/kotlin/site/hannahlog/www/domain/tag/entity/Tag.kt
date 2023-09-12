@@ -8,7 +8,7 @@ import site.hannahlog.www.domain.tag.dto.response.TagResponse
 class Tag(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long,
+    private val id: Long? = null,
 
     @Column(nullable = false)
     private val name: String

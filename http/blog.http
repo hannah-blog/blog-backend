@@ -4,3 +4,13 @@ GET {{backend_api}}/blog
 ### GET blog
 GET {{backend_api}}/blog/1
 
+### POST blog
+POST {{backend_api}}/blog
+Content-Type: application/json
+
+{
+  "title": "Blog title",
+  "content": "Blog content",
+  "thumbnailUrl": "https://cdn.hannah-log.site/cdn/python.jpg",
+  "tagIds": [1, 2, 3]
+}

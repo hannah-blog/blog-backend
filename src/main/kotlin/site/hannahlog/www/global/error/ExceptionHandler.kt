@@ -10,6 +10,11 @@ import site.hannahlog.www.global.common.status.ErrorStatus
 @RestControllerAdvice
 class ExceptionHandler {
 
+    @ExceptionHandler(Exception::class)
+    fun handleException(e: Exception): Error<String> {
+        return Error(ErrorStatus.SERVER_ERROR)
+    }
+
     @ExceptionHandler(LogicException::class)
     fun handleMemberException(e: LogicException): Error<String> {
         return Error(e.errorStatus)
