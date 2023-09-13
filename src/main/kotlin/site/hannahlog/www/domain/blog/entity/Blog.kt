@@ -1,45 +1,43 @@
 package site.hannahlog.www.domain.blog.entity
 
 import jakarta.persistence.*
+import site.hannahlog.www.domain.blog.dto.request.BlogSaveRequest
 import site.hannahlog.www.domain.blog.dto.response.BlogListResponse
 import site.hannahlog.www.domain.blog.dto.response.BlogResponse
+import site.hannahlog.www.domain.blogtags.entity.BlogTags
 import site.hannahlog.www.domain.model.BaseEntity
+import site.hannahlog.www.domain.tag.dto.response.TagResponse
 import site.hannahlog.www.domain.tag.entity.Tag
 
 @Entity
 class Blog(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null,
+    internal val id: Long? = null,
 
     @Column(nullable = false)
-    private val title: String,
+    internal val title: String,
 
     @Column(nullable = false)
-    private val thumbnailUrl: String,
+    internal val thumbnailUrl: String,
 
     @Column(columnDefinition = "TEXT")
-    private val content: String,
+    internal val content: String,
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
-    private val tags: List<Tag>,
+    @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
+    internal var tags: List<BlogTags> = listOf(),
 ): BaseEntity() {
 
-    fun toListResponse() = BlogListResponse(
-        id = this.id,
-        title = this.title,
-        thumbnailUrl = this.thumbnailUrl,
-        tags = this.tags.map { it.toResponse() },
-        createdDate = this.createdDate,
-    )
+    companion object {
+        fun of(request: BlogSaveRequest) = Blog(
+            title = request.title,
+            thumbnailUrl = request.thumbnailUrl,
+            content = request.content,
+        )
+    }
 
-    fun toResponse() = BlogResponse(
-        id = this.id,
-        title = this.title,
-        thumbnailUrl = this.thumbnailUrl,
-        content = this.content,
-        tags = this.tags.map { it.toResponse() },
-        createdDate = this.createdDate,
-    )
+    fun setUpTags(tags: List<Tag>) {
+        this.tags = tags.map { BlogTags(blog = this, tag = it) }
+    }
 
 }

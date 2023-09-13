@@ -8,17 +8,8 @@ import site.hannahlog.www.domain.tag.dto.response.TagResponse
 class Tag(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null,
+    internal val id: Long? = null,
 
     @Column(nullable = false)
-    private val name: String
-): BaseEntity() {
-
-    fun toResponse(): TagResponse {
-        return TagResponse(
-            id = this.id,
-            name = this.name,
-        )
-    }
-
-}
+    internal val name: String
+): BaseEntity()

@@ -1,6 +1,7 @@
 package site.hannahlog.www.domain.blog.dto.request
 
 import site.hannahlog.www.domain.blog.entity.Blog
+import site.hannahlog.www.domain.blogtags.entity.BlogTags
 import site.hannahlog.www.domain.tag.entity.Tag
 
 data class BlogSaveRequest(
@@ -9,10 +10,9 @@ data class BlogSaveRequest(
     val thumbnailUrl: String,
     val tagIds: List<Long>,
 ) {
-    fun toEntity(tags: List<Tag>) = Blog(
-        title = title,
-        content = content,
-        thumbnailUrl = thumbnailUrl,
-        tags = tags
+    fun toEntity() = Blog(
+        title = this.title,
+        content = this.content,
+        thumbnailUrl = this.thumbnailUrl,
     )
 }
