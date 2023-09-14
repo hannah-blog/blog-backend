@@ -1,6 +1,7 @@
 package site.hannahlog.www.domain.blog.entity
 
 import jakarta.persistence.*
+import org.hibernate.annotations.Where
 import site.hannahlog.www.domain.blog.dto.request.BlogSaveRequest
 import site.hannahlog.www.domain.blog.dto.response.BlogListResponse
 import site.hannahlog.www.domain.blog.dto.response.BlogResponse
@@ -10,6 +11,7 @@ import site.hannahlog.www.domain.tag.dto.response.TagResponse
 import site.hannahlog.www.domain.tag.entity.Tag
 
 @Entity
+@Where(clause = "deleted_date Is NULL")
 class Blog(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

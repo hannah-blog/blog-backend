@@ -1,11 +1,13 @@
 package site.hannahlog.www.domain.series.entity
 
 import jakarta.persistence.*
+import org.hibernate.annotations.Where
 import site.hannahlog.www.domain.blog.entity.Blog
 import site.hannahlog.www.domain.model.BaseEntity
 import site.hannahlog.www.domain.seriesblogs.entity.SeriesBlogs
 
 @Entity
+@Where(clause = "deleted_date Is NULL")
 class Series(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
