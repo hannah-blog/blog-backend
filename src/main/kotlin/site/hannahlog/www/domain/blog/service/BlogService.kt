@@ -2,7 +2,7 @@ package site.hannahlog.www.domain.blog.service
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import site.hannahlog.www.domain.blog.dto.request.BlogSaveRequest
+import site.hannahlog.www.domain.blog.dto.request.BlogRequest
 import site.hannahlog.www.domain.blog.dto.response.BlogListResponse
 import site.hannahlog.www.domain.blog.dto.response.BlogResponse
 import site.hannahlog.www.domain.blog.dto.response.toListResponse
@@ -31,12 +31,21 @@ class BlogService(
     }
 
     @Transactional
-    fun saveBlog(request: BlogSaveRequest): BlogResponse {
+    fun saveBlog(request: BlogRequest): BlogResponse {
         val tags = tagRepository.findTagsByIdIsIn(request.tagIds)
         val saveEntity = Blog.of(request)
         saveEntity.setUpTags(tags)
         return blogRepository.save(saveEntity)
             .toResponse()
+    }
+
+    @Transactional
+    fun updateBlog(id: Long, request: BlogRequest): BlogResponse {
+        val tags = tagRepository.findTagsByIdIsIn(request.tagIds)
+        val blog = blogRepository.findBlogById(id)
+            .orElseThrow { throw LogicException(ErrorStatus.NOT_EXIST_BLOG) }
+        blog.update(request, tags)
+        return blog.toResponse()
     }
 
 }

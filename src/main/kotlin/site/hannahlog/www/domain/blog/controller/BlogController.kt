@@ -1,7 +1,7 @@
 package site.hannahlog.www.domain.blog.controller
 
 import org.springframework.web.bind.annotation.*
-import site.hannahlog.www.domain.blog.dto.request.BlogSaveRequest
+import site.hannahlog.www.domain.blog.dto.request.BlogRequest
 import site.hannahlog.www.domain.blog.dto.response.BlogListResponse
 import site.hannahlog.www.domain.blog.dto.response.BlogResponse
 import site.hannahlog.www.domain.blog.service.BlogService
@@ -29,8 +29,16 @@ class BlogController(
 
     @IpCheck
     @PostMapping
-    fun saveBlog(@RequestBody request: BlogSaveRequest): Success<BlogResponse> {
+    fun saveBlog(@RequestBody request: BlogRequest): Success<BlogResponse> {
         val result = blogService.saveBlog(request)
         return Success(result, SuccessStatus.CREATED)
     }
+
+    @IpCheck
+    @PatchMapping("/{id}")
+    fun updateBlog(@PathVariable id: Long, @RequestBody request: BlogRequest): Success<BlogResponse> {
+        val result = blogService.updateBlog(id, request)
+        return Success(result, SuccessStatus.OK)
+    }
+
 }

@@ -2,12 +2,9 @@ package site.hannahlog.www.domain.blog.entity
 
 import jakarta.persistence.*
 import org.hibernate.annotations.Where
-import site.hannahlog.www.domain.blog.dto.request.BlogSaveRequest
-import site.hannahlog.www.domain.blog.dto.response.BlogListResponse
-import site.hannahlog.www.domain.blog.dto.response.BlogResponse
+import site.hannahlog.www.domain.blog.dto.request.BlogRequest
 import site.hannahlog.www.domain.blogtags.entity.BlogTags
 import site.hannahlog.www.domain.model.BaseEntity
-import site.hannahlog.www.domain.tag.dto.response.TagResponse
 import site.hannahlog.www.domain.tag.entity.Tag
 
 @Entity
@@ -18,20 +15,20 @@ class Blog(
     internal val id: Long? = null,
 
     @Column(nullable = false)
-    internal val title: String,
+    internal var title: String,
 
     @Column(nullable = false)
-    internal val thumbnailUrl: String,
+    internal var thumbnailUrl: String,
 
     @Column(columnDefinition = "TEXT")
-    internal val content: String,
+    internal var content: String,
 
     @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
     internal var tags: List<BlogTags> = listOf(),
 ): BaseEntity() {
 
     companion object {
-        fun of(request: BlogSaveRequest) = Blog(
+        fun of(request: BlogRequest) = Blog(
             title = request.title,
             thumbnailUrl = request.thumbnailUrl,
             content = request.content,
@@ -39,6 +36,13 @@ class Blog(
     }
 
     fun setUpTags(tags: List<Tag>) {
+        this.tags = tags.map { BlogTags(blog = this, tag = it) }
+    }
+
+    fun update(request: BlogRequest, tags: List<Tag>) {
+        this.title = request.title
+        this.thumbnailUrl = request.thumbnailUrl
+        this.content = request.content
         this.tags = tags.map { BlogTags(blog = this, tag = it) }
     }
 
