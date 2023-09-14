@@ -1,0 +1,32 @@
+### GET series
+GET {{backend_api}}/series
+
+### POST series
+POST {{backend_api}}/series
+Content-Type: application/json
+
+{
+  "title": "title",
+  "thumbnailUrl": "thumbnailUrl"
+}
+
+### PATCH series :id
+PATCH {{backend_api}}/series/1
+Content-Type: application/json
+
+{
+  "title": "titleUpdate",
+  "thumbnailUrl": "thumbnailUrlUpdate"
+}
+
+### DELETE series :id
+DELETE {{backend_api}}/series/1
+
+### GET series blog :id
+GET {{backend_api}}/series/blogs/1
+
+### POST series :id blogs :blogId
+POST {{backend_api}}/series/1/blogs/1
+
+### DELETE series :id blogs :blogId
+DELETE {{backend_api}}/series/1/blogs/1
