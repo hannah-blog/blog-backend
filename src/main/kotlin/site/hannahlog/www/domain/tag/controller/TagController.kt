@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 import site.hannahlog.www.domain.tag.dto.request.TagSaveRequest
 import site.hannahlog.www.domain.tag.dto.response.TagResponse
 import site.hannahlog.www.domain.tag.service.TagService
+import site.hannahlog.www.global.aop.ip.IpCheck
 import site.hannahlog.www.global.common.response.ApiResponse.Success
 import site.hannahlog.www.global.common.status.SuccessStatus
 
@@ -25,12 +26,14 @@ class TagController(
         return Success(result, SuccessStatus.OK)
     }
 
+    @IpCheck
     @PostMapping
     fun save(@RequestBody request: TagSaveRequest): Success<TagResponse> {
         val result = tagService.save(request)
         return Success(result, SuccessStatus.CREATED)
     }
 
+    @IpCheck
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long): Success<Long> {
         tagService.delete(id)
