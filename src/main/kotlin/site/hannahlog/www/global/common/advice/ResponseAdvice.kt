@@ -5,17 +5,19 @@ import org.springframework.http.MediaType
 import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.http.server.ServerHttpRequest
 import org.springframework.http.server.ServerHttpResponse
-import org.springframework.lang.Nullable
-import org.springframework.web.bind.annotation.ControllerAdvice
+import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice
 import site.hannahlog.www.global.common.response.ApiResponse
+import site.hannahlog.www.global.common.response.ApiResponse.Error
+import site.hannahlog.www.global.common.response.ApiResponse.Success
 
-
-@ControllerAdvice
+@RestControllerAdvice
 class ResponseAdvice : ResponseBodyAdvice<ApiResponse<*>> {
 
     override fun supports(returnType: MethodParameter, converterType: Class<out HttpMessageConverter<*>>): Boolean {
-        return returnType.parameterType.isAssignableFrom(ApiResponse::class.java)
+        val isErrorResponse = returnType.parameterType.isAssignableFrom(Error::class.java)
+        val isSuccessResponse = returnType.parameterType.isAssignableFrom(Success::class.java)
+        return isErrorResponse || isSuccessResponse
     }
 
     override fun beforeBodyWrite(
