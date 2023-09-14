@@ -1,0 +1,14 @@
+### GET tag
+GET {{backend_api}}/tag
+
+### POST tag
+POST {{backend_api}}/tag
+Content-Type: application/json
+
+{
+    "name": "tag1"
+}
+
+### DELETE tag
+DELETE {{backend_api}}/tag/8
+

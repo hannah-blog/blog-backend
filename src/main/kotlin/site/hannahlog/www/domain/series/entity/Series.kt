@@ -19,5 +19,4 @@ class Series(
 
     @OneToMany(mappedBy = "series", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
     private val blogs: List<SeriesBlogs>
-): BaseEntity() {
-}
+): BaseEntity()

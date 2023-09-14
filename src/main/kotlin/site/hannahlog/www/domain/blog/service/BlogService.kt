@@ -25,7 +25,7 @@ class BlogService(
     }
 
     fun getOne(id: Long): BlogResponse {
-        return blogRepository.findByIdAndDeletedDateIsNull(id)
+        return blogRepository.findBlogById(id)
             .map { it.toResponse() }
             .orElseThrow { throw LogicException(ErrorStatus.NOT_EXIST_BLOG) }
     }

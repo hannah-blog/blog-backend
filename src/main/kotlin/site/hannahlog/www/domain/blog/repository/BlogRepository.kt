@@ -11,5 +11,5 @@ interface BlogRepository: JpaRepository<Blog, Long> {
     fun findAllBy(): List<Blog>
 
     @EntityGraph(attributePaths = ["tags"], type = EntityGraphType.LOAD)
-    fun findByIdAndDeletedDateIsNull(id: Long): Optional<Blog>
+    fun findBlogById(id: Long): Optional<Blog>
 }

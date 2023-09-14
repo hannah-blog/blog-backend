@@ -11,6 +11,7 @@ enum class ErrorStatus(
     IP_ERROR(HttpStatus.FORBIDDEN, "허용되지 않은 IP입니다."),
 
     NOT_EXIST_BLOG(HttpStatus.NOT_FOUND, "존재하지 않는 블로그입니다."),
+    NOT_EXIST_TAG(HttpStatus.NOT_FOUND, "존재하지 않는 태그입니다."),
 
     NOT_URI(HttpStatus.BAD_GATEWAY, "잘못된 URI 요청입니다."),
     NOT_BODY(HttpStatus.BAD_REQUEST, "잘못된 Body 요청입니다.");
