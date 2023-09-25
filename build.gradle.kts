@@ -35,6 +35,9 @@ dependencies {
     // database
     runtimeOnly("com.h2database:h2")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+
+    // logging
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
 }
 
 tasks.withType<KotlinCompile> {
