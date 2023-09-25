@@ -38,7 +38,7 @@ class BlogController(
     @PatchMapping("/{id}")
     fun updateBlog(@PathVariable id: Long, @RequestBody request: BlogRequest): Success<BlogResponse> {
         val result = blogService.updateBlog(id, request)
-        return Success(result, SuccessStatus.OK)
+        return Success(result, SuccessStatus.UPDATED)
     }
 
 }

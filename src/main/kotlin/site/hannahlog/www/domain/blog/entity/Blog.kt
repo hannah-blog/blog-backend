@@ -24,7 +24,7 @@ class Blog(
     internal var content: String,
 
     @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
-    internal var tags: List<BlogTags> = listOf(),
+    internal var tags: MutableList<BlogTags> = mutableListOf(),
 ): BaseEntity() {
 
     companion object {
@@ -36,14 +36,15 @@ class Blog(
     }
 
     fun setUpTags(tags: List<Tag>) {
-        this.tags = tags.map { BlogTags(blog = this, tag = it) }
+        tags.map { this.tags.add(BlogTags(blog = this, tag = it)) }
     }
 
     fun update(request: BlogRequest, tags: List<Tag>) {
         this.title = request.title
         this.thumbnailUrl = request.thumbnailUrl
         this.content = request.content
-        this.tags = tags.map { BlogTags(blog = this, tag = it) }
+        this.tags.clear()
+        tags.map { this.tags.add(BlogTags(blog = this, tag = it)) }
     }
 
 }

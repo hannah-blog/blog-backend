@@ -16,6 +16,7 @@ open class BaseEntity(
     var createdDate: LocalDateTime = LocalDateTime.now(),
 
     @LastModifiedDate
+    @Column(updatable = true)
     var modifiedDate: LocalDateTime = LocalDateTime.now()
 ) {
     var deletedDate: LocalDateTime? = null

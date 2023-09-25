@@ -14,3 +14,14 @@ Content-Type: application/json
   "thumbnailUrl": "https://cdn.hannah-log.site/cdn/python.jpg",
   "tagIds": [1, 2, 3]
 }
+
+### PATCH blog
+PATCH {{backend_api}}/blog/1
+Content-Type: application/json
+
+{
+  "title": "Blog title update ㅇㅇ",
+  "content": "Blog content update",
+  "thumbnailUrl": "https://cdn.hannah-log.site/cdn/python.jpg",
+  "tagIds": [1, 2, 3]
+}

@@ -12,6 +12,7 @@ data class BlogResponse(
     val content: String,
     val tags: List<TagResponse>,
     val createdDate: LocalDateTime,
+    val modifiedDate: LocalDateTime,
 )
 
 fun Blog.toResponse() = BlogResponse(
@@ -21,4 +22,5 @@ fun Blog.toResponse() = BlogResponse(
     content = this.content,
     tags = this.tags.map { it.tag.toResponse() },
     createdDate = this.createdDate,
+    modifiedDate = this.modifiedDate,
 )
