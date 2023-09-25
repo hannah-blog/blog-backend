@@ -25,3 +25,6 @@ Content-Type: application/json
   "thumbnailUrl": "https://cdn.hannah-log.site/cdn/python.jpg",
   "tagIds": [1, 2, 3]
 }
+
+### DELETE blog
+DELETE {{backend_api}}/blog/1

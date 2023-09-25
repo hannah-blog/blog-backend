@@ -48,4 +48,10 @@ class BlogService(
         return blog.toResponse()
     }
 
+    @Transactional
+    fun deleteBlog(id: Long) {
+        blogRepository.findById(id)
+            .ifPresent { blog -> blog.delete() }
+    }
+
 }

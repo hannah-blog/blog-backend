@@ -41,4 +41,11 @@ class BlogController(
         return Success(result, SuccessStatus.UPDATED)
     }
 
+    @IpCheck
+    @DeleteMapping("/{id}")
+    fun deleteBlog(@PathVariable id: Long): Success<String> {
+        blogService.deleteBlog(id)
+        return Success(null, SuccessStatus.DELETED)
+    }
+
 }
