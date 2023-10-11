@@ -26,8 +26,8 @@ class BlogService(
 
     fun getOne(id: Long): BlogResponse {
         return blogRepository.findBlogById(id)
-            .map { it.toResponse() }
             .orElseThrow { throw LogicException(ErrorStatus.NOT_EXIST_BLOG) }
+            .toResponse()
     }
 
     @Transactional
