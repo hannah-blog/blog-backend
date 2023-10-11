@@ -21,8 +21,6 @@ class IpCheckAspect(
     @Before("@annotation(IpCheck)")
     fun checkIp(joinPoint: JoinPoint) {
         val request: HttpServletRequest = (RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes).request
-        println("request.remoteAddr: ${request.remoteAddr}")
-        println("ipWhiteList: $ipWhiteList")
         if (!ipWhiteList.contains(request.remoteAddr)) {
             throw LogicException(ErrorStatus.IP_ERROR)
         }
