@@ -33,8 +33,7 @@ class BlogService(
     @Transactional
     fun saveBlog(request: BlogRequest): BlogResponse {
         val tags = tagRepository.findTagsByIdIsIn(request.tagIds)
-        val saveEntity = Blog.of(request)
-        saveEntity.setUpTags(tags)
+        val saveEntity = Blog.of(request, tags)
         return blogRepository.save(saveEntity)
             .toResponse()
     }

@@ -28,11 +28,15 @@ class Blog(
 ): BaseEntity() {
 
     companion object {
-        fun of(request: BlogRequest) = Blog(
-            title = request.title,
-            thumbnailUrl = request.thumbnailUrl,
-            content = request.content,
-        )
+        fun of(request: BlogRequest, tags: List<Tag>): Blog {
+            val blog = Blog(
+                title = request.title,
+                thumbnailUrl = request.thumbnailUrl,
+                content = request.content,
+            )
+            blog.setUpTags(tags)
+            return blog
+        }
     }
 
     fun setUpTags(tags: List<Tag>) {
