@@ -25,6 +25,10 @@ class LogAspect {
         return try {
             result = joinPoint.proceed(joinPoint.args)
             result
+        } catch(e: Exception) {
+            logger.error("---------> Exception: {} {} {}", request.method, request.requestURI, Arrays.toString(joinPoint.args))
+            logger.error("---------> trace: {}", e.stackTraceToString())
+            throw e
         } finally {
             val end = System.currentTimeMillis()
             logger.info("---------> Request: {} {} {}", request.method, request.requestURI, Arrays.toString(joinPoint.args))
