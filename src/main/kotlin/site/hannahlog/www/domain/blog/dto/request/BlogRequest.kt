@@ -7,10 +7,4 @@ data class BlogRequest(
     val content: String,
     val thumbnailUrl: String,
     val tagIds: List<Long>,
-) {
-    fun toEntity() = Blog(
-        title = this.title,
-        content = this.content,
-        thumbnailUrl = this.thumbnailUrl,
-    )
-}
+)

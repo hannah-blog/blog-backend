@@ -1,0 +1,29 @@
+### GET portfolios
+GET {{backend_api}}/portfolio
+
+### GET portfolio
+GET {{backend_api}}/portfolio/1
+
+### POST portfolio
+POST {{backend_api}}/portfolio
+Content-Type: application/json
+
+{
+  "title": "Portfolio title",
+  "content": "Portfolio content",
+  "thumbnailUrl": "https://cdn.hannah-log.site/cdn/python.jpg"
+}
+
+### PATCH portfolio
+PATCH {{backend_api}}/portfolio/1
+Content-Type: application/json
+
+{
+  "title": "Portfolio title update",
+  "content": "Portfolio content update",
+  "thumbnailUrl": "https://cdn.hannah-log.site/cdn/python.jpg"
+}
+
+### DELETE portfolio
+DELETE {{backend_api}}/portfolio/1
+
