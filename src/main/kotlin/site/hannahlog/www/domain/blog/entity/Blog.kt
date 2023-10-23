@@ -24,7 +24,7 @@ class Blog(
     internal var content: String,
 
     @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
-    internal var tags: MutableList<BlogTags> = mutableListOf(),
+    internal val tags: MutableList<BlogTags> = mutableListOf(),
 ): BaseEntity() {
 
     companion object {
@@ -48,7 +48,7 @@ class Blog(
         this.thumbnailUrl = request.thumbnailUrl
         this.content = request.content
         this.tags.clear()
-        tags.map { this.tags.add(BlogTags(blog = this, tag = it)) }
+        this.setUpTags(tags)
     }
 
 }

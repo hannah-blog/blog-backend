@@ -21,20 +21,29 @@ class Series(
     internal var thumbnailUrl: String,
 
     @OneToMany(mappedBy = "series", fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
-    internal val blogs: List<SeriesBlogs>
+    internal val blogs: MutableList<SeriesBlogs> = mutableListOf()
 ): BaseEntity() {
 
     companion object {
-        fun of(request: SeriesRequest) = Series(
-            title = request.title,
-            thumbnailUrl = request.thumbnailUrl,
-            blogs = emptyList()
-        )
+        fun of(request: SeriesRequest, blogs: List<Blog>): Series {
+            val series = Series(
+                title = request.title,
+                thumbnailUrl = request.thumbnailUrl,
+            )
+            series.setUpBlogs(blogs)
+            return series
+        }
     }
 
-    fun update(request: SeriesRequest) {
+    fun setUpBlogs(blogs: List<Blog>) {
+        blogs.map { this.blogs.add(SeriesBlogs(series = this, blog = it)) }
+    }
+
+    fun update(request: SeriesRequest, blogs: List<Blog>) {
         this.title = request.title
         this.thumbnailUrl = request.thumbnailUrl
+        this.blogs.clear()
+        this.setUpBlogs(blogs)
     }
 
 }

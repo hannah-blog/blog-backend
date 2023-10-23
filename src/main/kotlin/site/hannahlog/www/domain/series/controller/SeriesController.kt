@@ -28,6 +28,12 @@ class SeriesController(
         return Success(result, SuccessStatus.OK)
     }
 
+    @GetMapping("{id}")
+    fun findOne(@PathVariable id: Long): Success<SeriesResponse> {
+        val result = seriesService.findById(id)
+        return Success(result, SuccessStatus.OK)
+    }
+
     @IpCheck
     @PostMapping
     fun save(@RequestBody request: SeriesRequest): Success<SeriesResponse> {
@@ -53,20 +59,6 @@ class SeriesController(
     fun findBlogsById(@PathVariable id: Long): Success<List<BlogListResponse>> {
         val result = seriesService.findBlogsById(id)
         return Success(result, SuccessStatus.OK)
-    }
-
-    @IpCheck
-    @PostMapping("/{id}/blogs/{blogId}")
-    fun addBlog(@PathVariable id: Long, @PathVariable blogId: Long): Success<Long> {
-        seriesService.addBlog(id, blogId)
-        return Success(id, SuccessStatus.OK)
-    }
-
-    @IpCheck
-    @DeleteMapping("/{id}/blogs/{blogId}")
-    fun deleteBlog(@PathVariable id: Long, @PathVariable blogId: Long): Success<Long> {
-        seriesService.deleteBlog(id, blogId)
-        return Success(id, SuccessStatus.OK)
     }
 
 }

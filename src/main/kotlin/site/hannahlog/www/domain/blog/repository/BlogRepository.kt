@@ -12,4 +12,7 @@ interface BlogRepository: JpaRepository<Blog, Long> {
 
     @EntityGraph(attributePaths = ["tags"], type = EntityGraphType.LOAD)
     fun findBlogById(id: Long): Optional<Blog>
+
+    fun findBlogsByIdIsIn(id: List<Long>): List<Blog>
+
 }

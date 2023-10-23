@@ -1,6 +1,9 @@
 ### GET series
 GET {{backend_api}}/series
 
+### GET blog
+GET {{backend_api}}/series/1
+
 ### POST series
 POST {{backend_api}}/series
 Content-Type: application/json
@@ -16,7 +19,8 @@ Content-Type: application/json
 
 {
   "title": "titleUpdate",
-  "thumbnailUrl": "thumbnailUrlUpdate"
+  "thumbnailUrl": "thumbnailUrlUpdate",
+  "blogIds": [1, 2, 3]
 }
 
 ### DELETE series :id
@@ -24,9 +28,3 @@ DELETE {{backend_api}}/series/1
 
 ### GET series blog :id
 GET {{backend_api}}/series/blogs/1
-
-### POST series :id blogs :blogId
-POST {{backend_api}}/series/1/blogs/1
-
-### DELETE series :id blogs :blogId
-DELETE {{backend_api}}/series/1/blogs/1
