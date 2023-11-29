@@ -1,6 +1,7 @@
 package site.hannahlog.www.global.aop.ip
 
 import jakarta.servlet.http.HttpServletRequest
+import mu.KotlinLogging
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Before
@@ -18,11 +19,13 @@ class IpCheckAspect(
     private val ipWhiteList: List<String> = listOf(),
 ) {
 
+    private val logger = KotlinLogging.logger {}
+
     @Before("@annotation(IpCheck)")
     fun checkIp(joinPoint: JoinPoint) {
         val request: HttpServletRequest = (RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes).request
-        println("request.remoteAddr: ${request.remoteAddr}")
-        println("ipWhiteList: $ipWhiteList")
+        logger.error { "request.remoteAddr: ${request.remoteAddr}" }
+        logger.error { "ipWhiteList: $ipWhiteList" }
         if (!ipWhiteList.contains(request.remoteAddr)) {
             throw LogicException(ErrorStatus.IP_ERROR)
         }
