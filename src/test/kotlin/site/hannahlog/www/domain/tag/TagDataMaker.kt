@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component
 import site.hannahlog.www.domain.tag.dto.request.TagSaveRequest
 import site.hannahlog.www.domain.tag.entity.Tag
 import site.hannahlog.www.domain.tag.repository.TagRepository
+import site.hannahlog.www.global.common.status.ErrorStatus
+import site.hannahlog.www.global.error.LogicException
 
 @Component
 class TagDataMaker @Autowired constructor(
@@ -20,6 +22,9 @@ class TagDataMaker @Autowired constructor(
         for(i in 1..count) tags.add(getSaveEntity(i))
         return tagRepository.saveAll(tags)
     }
+
+    fun getTagOrThrow(tagId: Long): Tag = tagRepository.findById(tagId)
+        .orElseThrow { throw LogicException(ErrorStatus.NOT_EXIST_TAG) }
 
     companion object {
         fun getSaveEntity(i: Long? = 1) = Tag(name = "name$i")

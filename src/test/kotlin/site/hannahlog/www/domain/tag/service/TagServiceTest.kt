@@ -5,18 +5,16 @@ import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+
 import site.hannahlog.www.domain.tag.TagDataMaker
-import site.hannahlog.www.domain.tag.dto.response.TagResponse
-import site.hannahlog.www.global.common.status.ErrorStatus
 import site.hannahlog.www.global.common.status.ErrorStatus.NOT_EXIST_TAG
 import site.hannahlog.www.global.error.LogicException
+import site.hannahlog.www.helper.ServiceTest
 
-@SpringBootTest
 class TagServiceTest @Autowired constructor(
     private val tagService: TagService,
     private val tagDataMaker: TagDataMaker,
-) {
+): ServiceTest() {
 
     @Test
     @DisplayName("태그 전체 조회 테스트 - success")
@@ -44,7 +42,6 @@ class TagServiceTest @Autowired constructor(
         val result = tagService.save(request)
 
         // then
-        assertThat(result).isInstanceOf(TagResponse::class.java)
         assertThat(result.name).isEqualTo(request.name)
     }
 
@@ -59,7 +56,7 @@ class TagServiceTest @Autowired constructor(
         tagService.delete(tagId)
 
         // then
-        assertThatThrownBy { getOrThrow(tagId) }
+        assertThatThrownBy { tagDataMaker.getTagOrThrow(tagId) }
             .isInstanceOf(LogicException::class.java)
             .hasMessage(NOT_EXIST_TAG.getMessage())
     }
@@ -72,8 +69,5 @@ class TagServiceTest @Autowired constructor(
             .isInstanceOf(LogicException::class.java)
             .hasMessage(NOT_EXIST_TAG.getMessage())
     }
-
-    private fun getOrThrow(tagId: Long) = tagDataMaker.tagRepository.findById(tagId)
-        .orElseThrow { throw LogicException(NOT_EXIST_TAG) }
 
 }
