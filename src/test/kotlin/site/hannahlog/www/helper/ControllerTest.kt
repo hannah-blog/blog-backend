@@ -9,11 +9,16 @@ import org.springframework.test.web.servlet.MockMvc
 
 @AutoConfigureMockMvc
 @SpringBootTest
-class ControllerTest @Autowired constructor(
-    protected val mockMvc: MockMvc,
-    protected val objectMapper: ObjectMapper,
-    protected val dataCleaner: DataCleaner
-) {
+class ControllerTest {
+
+    @Autowired
+    protected lateinit var mockMvc: MockMvc
+
+    @Autowired
+    protected lateinit var objectMapper: ObjectMapper
+
+    @Autowired
+    protected lateinit var dataCleaner: DataCleaner
 
     @AfterEach
     fun tearDown() {
