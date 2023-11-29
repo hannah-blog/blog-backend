@@ -19,13 +19,9 @@ class IpCheckAspect(
     private val ipWhiteList: List<String> = listOf(),
 ) {
 
-    private val logger = KotlinLogging.logger {}
-
     @Before("@annotation(IpCheck)")
     fun checkIp(joinPoint: JoinPoint) {
         val request: HttpServletRequest = (RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes).request
-        logger.error { "request.remoteAddr: ${request.remoteAddr}" }
-        logger.error { "ipWhiteList: $ipWhiteList" }
         if (!ipWhiteList.contains(request.remoteAddr)) {
             throw LogicException(ErrorStatus.IP_ERROR)
         }
