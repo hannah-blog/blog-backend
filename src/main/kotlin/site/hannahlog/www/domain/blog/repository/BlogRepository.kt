@@ -8,7 +8,7 @@ import java.util.*
 
 interface BlogRepository: JpaRepository<Blog, Long> {
     @EntityGraph(attributePaths = ["tags"], type = EntityGraphType.LOAD)
-    fun findAllBy(): List<Blog>
+    fun findAllByOrderByCreatedDateDesc(): List<Blog>
 
     @EntityGraph(attributePaths = ["tags"], type = EntityGraphType.LOAD)
     fun findBlogById(id: Long): Optional<Blog>

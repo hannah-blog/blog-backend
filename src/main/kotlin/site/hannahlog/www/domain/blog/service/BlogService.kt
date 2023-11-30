@@ -20,7 +20,8 @@ class BlogService(
 ) {
 
     fun getList(): List<BlogListResponse> {
-        return blogRepository.findAllBy()
+        return blogRepository
+            .findAllByOrderByCreatedDateDesc()
             .map { it.toListResponse() }
     }
 
