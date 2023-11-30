@@ -10,7 +10,7 @@ import site.hannahlog.www.global.common.response.ApiResponse.Success
 import site.hannahlog.www.global.common.status.SuccessStatus
 
 @RestController
-@RequestMapping("/blog")
+@RequestMapping("/blogs")
 class BlogController(
     private val blogService: BlogService,
 ) {

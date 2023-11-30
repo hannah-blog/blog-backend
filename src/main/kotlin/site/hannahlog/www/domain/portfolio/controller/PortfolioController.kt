@@ -9,7 +9,7 @@ import site.hannahlog.www.global.common.response.ApiResponse.Success
 import site.hannahlog.www.global.common.status.SuccessStatus
 
 @RestController
-@RequestMapping("/portfolio")
+@RequestMapping("/portfolios")
 class PortfolioController(
     private val portfolioService: PortfolioService,
 ) {

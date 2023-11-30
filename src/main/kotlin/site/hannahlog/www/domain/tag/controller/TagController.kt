@@ -15,7 +15,7 @@ import site.hannahlog.www.global.common.response.ApiResponse.Success
 import site.hannahlog.www.global.common.status.SuccessStatus
 
 @RestController
-@RequestMapping("/tag")
+@RequestMapping("/tags")
 class TagController(
     private val tagService: TagService,
 ) {
