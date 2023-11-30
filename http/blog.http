@@ -1,11 +1,11 @@
 ### GET blogs
-GET {{backend_api}}/blog
+GET {{backend_api}}/blogs
 
 ### GET blog
-GET {{backend_api}}/blog/1
+GET {{backend_api}}/blogs/1
 
 ### POST blog
-POST {{backend_api}}/blog
+POST {{backend_api}}/blogs
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### PATCH blog
-PATCH {{backend_api}}/blog/1
+PATCH {{backend_api}}/blogs/1
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### DELETE blog
-DELETE {{backend_api}}/blog/1
+DELETE {{backend_api}}/blogs/1

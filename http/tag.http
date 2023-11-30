@@ -1,8 +1,8 @@
 ### GET tag
-GET {{backend_api}}/tag
+GET {{backend_api}}/tags
 
 ### POST tag
-POST {{backend_api}}/tag
+POST {{backend_api}}/tags
 Content-Type: application/json
 
 {
@@ -10,5 +10,5 @@ Content-Type: application/json
 }
 
 ### DELETE tag
-DELETE {{backend_api}}/tag/8
+DELETE {{backend_api}}/tags/8
 

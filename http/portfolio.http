@@ -1,11 +1,11 @@
 ### GET portfolios
-GET {{backend_api}}/portfolio
+GET {{backend_api}}/portfolios
 
 ### GET portfolio
-GET {{backend_api}}/portfolio/1
+GET {{backend_api}}/portfolios/1
 
 ### POST portfolio
-POST {{backend_api}}/portfolio
+POST {{backend_api}}/portfolios
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### PATCH portfolio
-PATCH {{backend_api}}/portfolio/1
+PATCH {{backend_api}}/portfolios/1
 Content-Type: application/json
 
 {
@@ -25,5 +25,5 @@ Content-Type: application/json
 }
 
 ### DELETE portfolio
-DELETE {{backend_api}}/portfolio/1
+DELETE {{backend_api}}/portfolios/1
 
